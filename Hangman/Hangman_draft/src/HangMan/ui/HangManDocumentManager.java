@@ -132,6 +132,7 @@ public class HangManDocumentManager {
 				String lossText = props
 						.getProperty(HangManPropertyType.LOSE_DISPLAY_TEXT);
 				gameDoc.setInnerHTML(loseH2, lossText);
+                                ui.disableAllKeys();
 			} else {
 				// GAME IS STILL IN PROGRESS
 				gameDoc.setInnerHTML(winH2, EMPTY_TEXT);
