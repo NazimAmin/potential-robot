@@ -39,7 +39,7 @@ public class HangManEventHandler {
      */
 	public void respondToSwitchScreenRequest(HangManUI.HangManUIState uiState){
 		
-		//ui.changeWor
+		ui.changeWorkspace(uiState);
 	}
 	
 	/**
@@ -121,21 +121,20 @@ public class HangManEventHandler {
         //SET COLOR FIRST
         if(ui.getGSM().getGameInProgress().isRightGuess(guess)){
             //letterButton.setBackground(Color.GREEN);
-        	letterButton.setStyle("-fx-base:green");
+        	letterButton.setStyle("-fx-base:green; -fx-text-fill:blue");
             //letterButton.setForeground(Color.BLUE);
-        	letterButton.setStyle("-fx-text-fill:blue");
+        	//letterButton.setStyle("-fx-text-fill:blue");
         	
             //letterButton.setEnabled(false);
         	letterButton.setDisable(true);
-
         }
         //WRONG GUESS
         else if(!ui.getGSM().getGameInProgress().isRightGuess(guess)){
             //letterButton.setBackground(Color.RED);
             //letterButton.setForeground(Color.WHITE);
             //letterButton.setEnabled(false);
-        	letterButton.setStyle("-fx-base:red");
-        	letterButton.setStyle("-fx-text-fill:white");
+        	letterButton.setStyle("-fx-base:red; -fx-text-fill:white");
+        	//letterButton.setStyle("-fx-text-fill:White");
         	letterButton.setDisable(true);
         }
 
@@ -206,6 +205,9 @@ public class HangManEventHandler {
             // YES, LET'S EXIT
             System.exit(0);
         });
+        noButton.setOnAction(e ->{
+           dialogStage.close();
+    });
 
     }    
 	

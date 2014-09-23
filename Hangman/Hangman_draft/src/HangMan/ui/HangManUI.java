@@ -1,23 +1,15 @@
 package HangMan.ui;
 
+import HangMan.file.HangManFileLoader;
+import HangMan.game.HangManGameData;
+import HangMan.game.HangManGameStateManager;
 import application.Main;
 import application.Main.HangManPropertyType;
-
+import java.awt.Dimension;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import javax.swing.JEditorPane;
-import javax.swing.event.HyperlinkListener;
-import javax.swing.text.Document;
-import javax.swing.text.html.HTMLDocument;
-
-import HangMan.file.HangManFileLoader;
-import HangMan.game.HangManGameData;
-import HangMan.game.HangManGameStateManager;
-import application.Main.HangManPropertyType;
-import properties_manager.PropertiesManager;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,7 +29,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javax.swing.ImageIcon;
+import javax.swing.JEditorPane;
+import javax.swing.JScrollPane;
+import javax.swing.event.HyperlinkListener;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLDocument;
+import properties_manager.PropertiesManager;
 
 public class HangManUI extends Pane {
 	/**
@@ -106,6 +107,9 @@ public class HangManUI extends Pane {
 	private HangManDocumentManager docManager;
 
 	HangManGameStateManager gsm;
+        JEditorPane gamePane;
+        JScrollPane guessesScrollPane;
+        SwingNode gameSwingNode;
 	
 	public HangManUI() {
 		// WE'LL USE THIS EVENT HANDLER FOR LOTS OF CONTROLS
@@ -390,7 +394,7 @@ public class HangManUI extends Pane {
 		// workspace.setLayout(cardLayout);
 	}
 
-	JEditorPane gamePane;
+
 	
 	/**
 	 * This method initializes the game screen for running the game.
@@ -404,21 +408,29 @@ public class HangManUI extends Pane {
 		// gamePane.addKeyListener(cheatKeyHandler);
 		gamePane.setEditable(false);
 		gamePane.setContentType("text/html");
-		gamePane.setSize(600, 600);
-
+                gamePane.setSize(600, 600);
+               //gameSwingNode.resize(600, 600);
+               //gamePanel.resize(600, 600);
+               gamePane.setPreferredSize(new Dimension(525, 400));//(new Dimension(600, 600));
 		// LET'S LOAD THE INITIAL HTML INTO THE STATS EDITOR PAGE
 		this.loadPage(gamePane, HangManPropertyType.GAME_FILE_NAME);
 		HTMLDocument gameDoc = (HTMLDocument) gamePane.getDocument();
 		docManager.setGameDoc(gameDoc);
 		
-		//embed swing into javafx
-		final SwingNode swingNode = new SwingNode();
-		swingNode.setContent(gamePane);
-		ScrollPane guessesScrollPane = new ScrollPane();
-		guessesScrollPane.setContent(swingNode);
-		guessesScrollPane.autosize();
-		//guessesScrollPane.resize(200, 200);
+//		//embed swing into javafx
+//		final SwingNode swingNode = new SwingNode();
+//		swingNode.setContent(gamePane);
+//		ScrollPane guessesScrollPane = new ScrollPane();
+//		guessesScrollPane.setContent(swingNode);
+//		guessesScrollPane.autosize();
+//		guessesScrollPane.resize(200, 200);
 
+                guessesScrollPane = new JScrollPane(gamePane);
+                gameSwingNode = new SwingNode();
+                gameSwingNode.setContent(guessesScrollPane);
+                
+                
+                        
 		// LOAD THE HangMan PICTURE AT ZERO STAGE
 		String HangMan = props
 				.getProperty(HangManPropertyType.HANGMAN0_IMG_NAME);
@@ -455,7 +467,14 @@ public class HangManUI extends Pane {
 		});
 
 		// THE NEW GAME BUTTON IS LAST CONTROL FOR THE NORTH OF THE SOUTH
-		newGameButton = new Button();
+            String newGameButtonString = props.getProperty(HangManPropertyType.NEW_GAME_IMG_NAME);
+            Image newButtonImg = loadImage(newGameButtonString);
+            ImageView newButtonImgIcon = new ImageView(newButtonImg);
+            newGameButton = new Button();
+            newGameButton.setGraphic(newButtonImgIcon);
+            //setTooltip(newGameButton, HangManPropertyType.HOME_TOOLTIP);
+            newGameButton.setPadding(marginlessInsets);
+                
 		
 		setTooltip(newGameButton, HangManPropertyType.NEW_GAME_TOOLTIP);
 		
@@ -524,7 +543,7 @@ public class HangManUI extends Pane {
 		//gamePanel.setLayout(new BorderLayout());
 		southGamePane.setTop(guessingPane);
 		southGamePane.setBottom(letterButtonsPane);
-		gamePanel.setCenter(guessesScrollPane);
+		gamePanel.setCenter(gameSwingNode);
 		gamePanel.setBottom(southGamePane);
 		gamePanel.setRight(hmPane);
 		// NOW MAKE THIS PANEL PART OF THE WORKSPACE, WHICH MEANS WE
@@ -586,19 +605,22 @@ public class HangManUI extends Pane {
         homeButton = new Button();
         homeButton.setGraphic(homeImgIcon);
         setTooltip(homeButton, HangManPropertyType.HOME_TOOLTIP);
+       // homeButton.
+
         homeButton.setPadding(marginlessInsets);
         
         // WE'LL PUT THE HOME BUTTON IN A TOOLBAR IN THE NORTH OF THIS SCREEN,
         // UNDER THE NORTH TOOLBAR THAT'S SHARED BETWEEN THE THREE SCREENS
-        Pane helpToolbar = new Pane();
+        BorderPane helpToolbar = new BorderPane();
         helpPanel = new BorderPane();
         //helpPanel.setLayout(new BorderLayout());
         helpPanel.setTop(helpToolbar);
         
         helpPanel.setCenter(helpScrollPane);
-        helpToolbar.getChildren().add(homeButton);
-        helpToolbar.setStyle("-fx-background-color:white");
-        
+        helpToolbar.setCenter(homeButton);
+       // helpToolbar.getChildren().add(homeButton);
+        helpToolbar.setStyle("-fx-background-color:GREEN");
+      
         // LOAD THE HELP PAGE
         loadPage(helpPane, HangManPropertyType.HELP_FILE_NAME);
         
@@ -620,6 +642,7 @@ public class HangManUI extends Pane {
         // ADD IT TO THE WORKSPACE
        // workspace.add(helpPanel, HangManUIState.VIEW_HELP_STATE.toString());
        // workspace.getChildren().add(helpPanel);
+//         
     } 
 
 	public Image loadImage(String imageName) {
@@ -676,6 +699,21 @@ public class HangManUI extends Pane {
 		// SWITCH TO THE REQUESTED SCREEN
 		// CardLayout workspaceCardLayout = (CardLayout)workspace.getLayout();
 		// workspaceCardLayout.show(workspace, uiScreen.toString());
+              if(uiScreen.equals(HangManUIState.PLAY_GAME_STATE)){
+                workspace.getChildren().remove(statsScrollPane);
+                workspace.getChildren().remove(helpPanel);
+                gamePanel.setVisible(true);
+           }else if(uiScreen.equals(HangManUIState.VIEW_STATS_STATE)){
+               workspace.getChildren().remove(statsScrollPane);
+               workspace.getChildren().add(statsScrollPane);
+               workspace.getChildren().remove(helpPanel);
+               gamePanel.setVisible(false);
+           }else if(uiScreen.equals(HangManUIState.VIEW_HELP_STATE)){
+               workspace.getChildren().remove(helpPanel);
+               workspace.getChildren().add(helpPanel);
+               workspace.getChildren().remove(statsScrollPane);
+               gamePanel.setVisible(false);
+           }
 	}
 	
 	/**
