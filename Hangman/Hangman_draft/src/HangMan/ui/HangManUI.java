@@ -813,8 +813,8 @@ public class HangManUI extends Pane {
     }
 
     public void disableAllKeys() {
-        for (Button b : letterButtons.values()) {
-            b.setDisable(true);
+        for (Button button : letterButtons.values()) {
+            button.setDisable(true);
         }
     }
 }

@@ -123,6 +123,7 @@ public class HangManDocumentManager {
 				String winText = props
 						.getProperty(HangManPropertyType.WIN_DISPLAY_TEXT);
 				gameDoc.setInnerHTML(winH2, winText);
+                                ui.disableAllKeys();
 			}
 
 			if (gameInProgress.getWrongTimes() >= 6) {
