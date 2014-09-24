@@ -406,7 +406,7 @@ public class HangManUI extends Pane {
         gamePane.setEditable(false);
         gamePane.setContentType("text/html");
         gamePane.setSize(600, 600);
-               //gameSwingNode.resize(600, 600);
+        // gameSwingNode.resize(600, 600);
         //gamePanel.resize(600, 600);
         gamePane.setPreferredSize(new Dimension(525, 400));//(new Dimension(600, 600));
         // LET'S LOAD THE INITIAL HTML INTO THE STATS EDITOR PAGE
@@ -564,7 +564,8 @@ public class HangManUI extends Pane {
         swingNode.setContent(statsPane);
         statsScrollPane = new ScrollPane();
         statsScrollPane.setContent(swingNode);
-
+        statsPane.setSize(600, 600);
+        statsPane.setPreferredSize(new Dimension(790, 540));
         // NOW ADD IT TO THE WORKSPACE, MEANING WE CAN SWITCH TO IT
         //workspace.add(statsScrollPane, HangManUIState.VIEW_STATS_STATE.toString());
         //workspace.getChildren().add(statsScrollPane);
@@ -581,7 +582,8 @@ public class HangManUI extends Pane {
         swingNode.setContent(helpPane);
         helpScrollPane = new ScrollPane();
         helpScrollPane.setContent(swingNode);
-
+        helpPane.setSize(600, 600);
+        helpPane.setPreferredSize(new Dimension(790, 540));
         // NOW LOAD THE HELP HTML
         helpPane.setContentType("text/html");
 
@@ -606,7 +608,7 @@ public class HangManUI extends Pane {
 
         helpPanel.setCenter(helpScrollPane);
         helpToolbar.setCenter(homeButton);
-        // helpToolbar.getChildren().add(homeButton);
+        //helpToolbar.getChildren().add(homeButton);
         helpToolbar.setStyle("-fx-background-color:GREEN");
 
         // LOAD THE HELP PAGE
@@ -630,13 +632,14 @@ public class HangManUI extends Pane {
 
             @Override
             public void hyperlinkUpdate(HyperlinkEvent e) {
-                try {
-                    helpPane.setPage(e.getURL());
-                    helpPane.repaint();
-                } catch (IOException ex) {
-
-                }
-
+                    if(e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED)){
+                   //helpPane.setPage(e.getURL());
+                    //helpPane.repaint();}
+                    loadRemoteHelpPage(e.getURL());
+                    changeWorkspace(HangManUIState.VIEW_STATS_STATE);
+                    changeWorkspace(HangManUIState.VIEW_HELP_STATE);
+                    }
+          
             }
         });
         // ADD IT TO THE WORKSPACE
