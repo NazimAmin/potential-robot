@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="XMLUtilities1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../PropertiesManager/dist/lib/XMLUtilities.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
