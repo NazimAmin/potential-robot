@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="saveGame" layoutX="666.0" layoutY="557.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="120.0" text="Save Game" />
+      <Button fx:id="gameHistory" layoutX="666.0" layoutY="480.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="120.0" text="Game History" />
+      <Button fx:id="aboutGame" layoutX="666.0" layoutY="519.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="120.0" text="About Game" />
+      <Button fx:id="flighPlan" layoutX="666.0" layoutY="442.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="120.0" text="Flight Plan" />
+      <GridPane gridLinesVisible="true" layoutX="666.5" layoutY="318.5" prefHeight="93.0" prefWidth="120.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="mapSelectionOne" fitHeight="47.0" fitWidth="60.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/gameplay_AC14.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <ImageView fx:id="mapSelectionTwo" fitHeight="47.0" fitWidth="60.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/gameplay_DF14.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="mapSelectionThree" fitHeight="47.0" fitWidth="60.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/gameplay_AC58.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="mapSelectionFour" fitHeight="47.0" fitWidth="60.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <image>
+                        <Image url="@../img/gameplay_DF58.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+      <ImageView fitHeight="106.0" fitWidth="120.0" layoutX="673.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/die_5.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="577.0" fitWidth="468.0" layoutX="192.0" layoutY="8.0" pickOnBounds="true">
+         <image>
+            <Image url="@../img/gameplay_AC14.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="8.0" layoutY="7.0" prefHeight="584.0" prefWidth="178.0">
+         <children>
+            <Label fx:id="gameplayPlayerName" layoutX="7.0" layoutY="6.0" text="Player Name" />
+            <StackPane layoutX="-1.0" layoutY="43.0" prefHeight="535.0" prefWidth="178.0" style="-fx-background-color: #ffffff;" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
