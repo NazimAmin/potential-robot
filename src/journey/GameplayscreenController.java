@@ -23,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import static journey.PlayerselectionController.playernumber;
 
 /**
  * FXML Controller class
@@ -69,7 +70,7 @@ public class GameplayscreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
       //  readCSV csvData = new readCSV();
-        
+       gameplayPlayerName.setText("Total Player: " + playernumber);
         firstMap.setOnMouseClicked(e->{
         col = e.getX();//*
         row = e.getY();//*
@@ -123,9 +124,7 @@ public class GameplayscreenController implements Initializable {
 
     @FXML
     private void firstMapClicked(MouseEvent event) {
-        
 
-     
     }
 
     @FXML
