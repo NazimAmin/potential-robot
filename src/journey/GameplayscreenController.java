@@ -56,27 +56,42 @@ public class GameplayscreenController implements Initializable {
     private ImageView mapSelectionFour;
     @FXML
     private ImageView firstMap;
-
+double col=0;
+        double row=0;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        readCSV csvData = new readCSV();
+      //  readCSV csvData = new readCSV();
+        
         firstMap.setOnMouseClicked(e->{
+            
             System.out.println("ok");
         //int mapW = (int)firstMap.getFitWidth();
         //int mapX = (int)firstMap.getFitHeight();
-        double col = e.getX()*(468/2010);
-        double row = e.getY()*(577/2569);
-        
-        for(int i = 0; i < 180; i++){
-        if((col+10)<= csvData.x.get(i) && (col-10) >= csvData.x.get(i)){
+        col = e.getX();//*
+        row = e.getY();//*
+            System.out.println(""+col+" "+row);
             
-        }
-        if quad==1
-                
+          double xxx=col+10;
+          double xxxx=col-10;
+          double yyy=row+10;
+          double yyyy=row-10;
+        for(int i = 0; i < 180; i++){
+
+            if((col-readCSV.x[i]) >= -10 && (col-readCSV.x[i] <= 10)){
+                if((row-readCSV.y[i]) >= -10 && (row-readCSV.y[i] <= 10)){
+                      System.out.println("x: "+ readCSV.x[i]);
+            System.out.println("y: "+ readCSV.y[i]);
+                if (readCSV.quad[i] == 1){
+                    System.out.println(readCSV.citiesname[i]);
+                } 
+                }
+            } 
+         
+        }     
         });
     }    
 
