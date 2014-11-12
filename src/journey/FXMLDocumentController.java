@@ -51,7 +51,7 @@ public class FXMLDocumentController implements Initializable {
     Node node = (Node) event.getSource();
     Stage stage = (Stage) node.getScene().getWindow();
     Scene scene = stage.getScene();
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("playerselection.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("gameselection.fxml"));
     Parent root = (Parent) fxmlLoader.load();          
     scene.setRoot(root);
     

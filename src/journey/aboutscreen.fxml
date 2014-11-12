@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="aboutAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="journey.AboutscreenController">
+   <children>
+      <WebView fx:id="aboutWebView" cache="true" layoutY="1.0" minHeight="-Infinity" minWidth="-Infinity" />
+      <Label fx:id="loadingWebView" layoutX="227.0" layoutY="276.0" text="Loading Wikipedia ..." wrapText="true">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Button fx:id="closeAbout" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeAboutWindow" prefHeight="25.0" prefWidth="66.0" text="Close" />
+   </children>
+</AnchorPane>

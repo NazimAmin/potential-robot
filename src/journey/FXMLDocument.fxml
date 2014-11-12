@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<GridPane alignment="center" hgap="10" minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="journey.Controller">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <ImageView fitHeight="600.0" fitWidth="700.0">
+            <image>
+                <Image url="@../img/Game.JPG" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="395.0" fitWidth="701.0" opacity="0.35">
+            <image>
+                <Image url="@../img/START_SCREEN_BACKGROUND.gif" />
+            </image>
+        </ImageView>
+        <AnchorPane minHeight="600.0" minWidth="700.0" prefHeight="600.0" prefWidth="700.0">
+            <children>
+                <VBox layoutX="259.0" layoutY="371.0">
+                    <children>
+                        <Button fx:id="playGameButton" layoutX="259.0" layoutY="371.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="197.0" text="Play Game" />
+                        <Button fx:id="loadGameButton" layoutX="259.0" layoutY="419.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="197.0" text="Load Game" />
+                        <Button fx:id="aboutGameButton" layoutX="259.0" layoutY="467.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="197.0" text="About " />
+                        <Button fx:id="quitGameButton" layoutX="259.0" layoutY="515.0" mnemonicParsing="false" onAction="#quitGameButton" prefHeight="48.0" prefWidth="197.0" text="Quit Game" />
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </children>
+</GridPane>
