@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="mainAnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="journey.FXMLDocumentController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0">
+         <image>
+            <Image url="@../img/Game.JPG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="360.0" fitWidth="800.0" layoutX="2.0" layoutY="148.0" opacity="0.17">
+         <image>
+            <Image url="@../img/START_SCREEN_BACKGROUND.gif" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="606.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="playGameButton" layoutX="326.0" layoutY="456.0" mnemonicParsing="false" onAction="#playGameAction" prefHeight="25.0" prefWidth="101.0" text="Play Game" />
+            <Button fx:id="aboutGameButton" layoutX="326.0" layoutY="534.0" mnemonicParsing="false" onAction="#aboutGameAction" prefHeight="25.0" prefWidth="101.0" text="About Game" />
+            <Button fx:id="loadGameButton" layoutX="326.0" layoutY="496.0" mnemonicParsing="false" onAction="#loadGameAction" prefHeight="25.0" prefWidth="101.0" text="Load Game" />
+            <Button fx:id="quitGame" layoutX="326.0" layoutY="567.0" mnemonicParsing="false" onAction="#quitGameAction" prefHeight="25.0" prefWidth="101.0" text="Quit Game" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
