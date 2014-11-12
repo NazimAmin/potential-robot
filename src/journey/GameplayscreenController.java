@@ -8,6 +8,7 @@ package journey;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -56,8 +58,10 @@ public class GameplayscreenController implements Initializable {
     private ImageView mapSelectionFour;
     @FXML
     private ImageView firstMap;
-double col=0;
-        double row=0;
+    double col=0;
+    double row=0;
+    @FXML
+    private Button closeButton;
     /**
      * Initializes the controller class.
      */
@@ -67,26 +71,19 @@ double col=0;
       //  readCSV csvData = new readCSV();
         
         firstMap.setOnMouseClicked(e->{
-            
-            System.out.println("ok");
-        //int mapW = (int)firstMap.getFitWidth();
-        //int mapX = (int)firstMap.getFitHeight();
         col = e.getX();//*
         row = e.getY();//*
             System.out.println(""+col+" "+row);
-            
-          double xxx=col+10;
-          double xxxx=col-10;
-          double yyy=row+10;
-          double yyyy=row-10;
-        for(int i = 0; i < 180; i++){
 
+        for(int i = 0; i < 180; i++){
             if((col-readCSV.x[i]) >= -10 && (col-readCSV.x[i] <= 10)){
                 if((row-readCSV.y[i]) >= -10 && (row-readCSV.y[i] <= 10)){
                       System.out.println("x: "+ readCSV.x[i]);
             System.out.println("y: "+ readCSV.y[i]);
                 if (readCSV.quad[i] == 1){
                     System.out.println(readCSV.citiesname[i]);
+                    gameplayPlayerName.setText(readCSV.citiesname[i]);     
+                 Tooltip.install(firstMap, new Tooltip(readCSV.citiesname[i]));
                 } 
                 }
             } 
@@ -129,6 +126,11 @@ double col=0;
         
 
      
+    }
+
+    @FXML
+    private void closeButtonExit(ActionEvent event) {
+        exit();
     }
     
 }
